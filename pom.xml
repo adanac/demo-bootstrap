@@ -82,10 +82,23 @@
     	<version>1.0.0</version>
     </dependency>
     <dependency>
+		<groupId>com.adanac.framework</groupId>
+		<artifactId>adanac-dac</artifactId>
+		<version>1.0.0</version>
+	</dependency>
+    <dependency>
 	    <groupId>commons-fileupload</groupId>
 	    <artifactId>commons-fileupload</artifactId>
 	</dependency>
-           
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>dubbo</artifactId>
+        <version>2.8.4</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.google.code.gson</groupId>
+    	<artifactId>gson</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <finalName>demo-bootstrap</finalName>
