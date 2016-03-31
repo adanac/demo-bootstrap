@@ -1,4 +1,6 @@
-package com.adanac.demo.bootstrap.entity;
+package com.adanac.demo.bootstrap.entity.pubapply;
+
+import com.adanac.demo.bootstrap.entity.common.BaseDto;
 
 /**
  * 服务申请dto

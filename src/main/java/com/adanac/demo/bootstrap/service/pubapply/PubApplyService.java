@@ -1,7 +1,7 @@
-package com.adanac.demo.bootstrap.service;
+package com.adanac.demo.bootstrap.service.pubapply;
 
-import com.adanac.demo.bootstrap.entity.PubApplyDto;
-import com.adanac.demo.bootstrap.entity.PubApplyQueryDto;
+import com.adanac.demo.bootstrap.entity.pubapply.PubApplyDto;
+import com.adanac.demo.bootstrap.entity.pubapply.PubApplyQueryDto;
 import com.adanac.framework.page.Pager;
 
 /**

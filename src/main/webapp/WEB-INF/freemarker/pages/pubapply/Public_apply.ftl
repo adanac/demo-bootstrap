@@ -72,7 +72,7 @@
     <script src="${resRoot}/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- 表格插件 -->
     <script src="${resRoot}/plugins/bootstrap-table/js/bootstrap-table.js"></script>
-    <script src="${resRoot}/pages/settings/apply.js" type="text/javascript"></script>
+    <script src="${resRoot}/pages/pubapply/apply.js" type="text/javascript"></script>
     <script>
     /*jQuery(document).ready(function() {
     	queryApplyList();
@@ -80,6 +80,7 @@
     $(function(){
     	queryApplyList();
     });
+    var basePath = '${base}';
     </script>
 </body>
 

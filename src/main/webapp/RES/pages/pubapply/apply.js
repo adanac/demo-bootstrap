@@ -7,9 +7,10 @@ var queryParams = function (params){
 	}
     function queryApplyList() {
     	console.log('${base}');
+    	console.log(basePath);
 		$('#apply_list').bootstrapTable({
 			method: 'get',
-			url: 'http://192.168.1.162:8083/demo-bootstrap/pubapply/pubApplyList.do',
+			url: basePath + '/pubapply/pubApplyList.do',
 			queryParams: queryParams,//传递参数
 			striped: true,      //是否显示行间隔色
 			cache: false,      //是否使用缓存，默认为true
@@ -63,7 +64,7 @@ var queryParams = function (params){
                   var temp="";
                   var status = row.status;
                   if(status==2){
-                	  temp = "<a href='${base}/pubapply/toReg.do?id=" + row.number
+                	  temp = "<a href='" + basePath + "/pubapply/toReg.do?id=" + row.number
 						+ "' title='重新申请'><i class='btn glyphicon glyphicon-refresh'></i></a>";
                   }
                   return temp;

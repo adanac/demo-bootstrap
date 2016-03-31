@@ -1,4 +1,4 @@
-package com.adanac.demo.bootstrap.entity;
+package com.adanac.demo.bootstrap.entity.pubapply;
 
 import java.io.Serializable;
 

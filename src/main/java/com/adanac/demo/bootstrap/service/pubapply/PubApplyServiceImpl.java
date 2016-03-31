@@ -1,4 +1,4 @@
-package com.adanac.demo.bootstrap.service;
+package com.adanac.demo.bootstrap.service.pubapply;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.adanac.demo.bootstrap.entity.PubApplyDto;
-import com.adanac.demo.bootstrap.entity.PubApplyQueryDto;
+import com.adanac.demo.bootstrap.entity.pubapply.PubApplyDto;
+import com.adanac.demo.bootstrap.entity.pubapply.PubApplyQueryDto;
 import com.adanac.framework.log.MyLogger;
 import com.adanac.framework.log.MyLoggerFactory;
 import com.adanac.framework.page.Pager;
