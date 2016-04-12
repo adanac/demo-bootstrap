@@ -41,17 +41,16 @@
 	 -->
 	<!-- JMS数据源的引用 -->
 	<!-- connection factory, if your send and receive queue managers are difference, then configure 2 factories  -->
-	<!-- <jee:jndi-lookup id="jmsConnectionFactory" jndi-name="jms/queueConnectionFactory"/>
- 	-->	
+	<!-- <jee:jndi-lookup id="jmsConnectionFactory" jndi-name="jms/queueConnectionFactory"/>-->	
  
 	 <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" /> 
 	 <!-- DAL客户端接口实现 -->
-	 <bean id="dalClient" class="com.bn.framework.dac.client.support.PaginationDacClient"> 
-		<!-- SQL的Xml配置路径 -->
+	 <bean id="dalClient" class="com.adanac.framework.dac.client.support.PaginationDacClient"> 
+		 <!-- SQL的Xml配置路径 -->
 		 <property name="sqlMapConfigLocation" value="classpath*:conf/sqlMAP/*.xml" /> 
-		<!-- 定义默义的数据源 -->
+		 <!-- 定义默义的数据源 -->
 		 <property name="dataSource" ref="dataSource" /> 
-	</bean> 
+	 </bean> 
 	 <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">   
 	    <property name="dataSource" ref="dataSource"></property>   
 	    <qualifier value="umc"/> 
