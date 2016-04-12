@@ -26,19 +26,21 @@
 
 	<!--===================== view resovler ===================== -->
 	
-   	<!-- 只掃描controller 
+   	<!-- 只掃描controller -->
     <context:component-scan base-package="com.adanac.demo" use-default-filters="false">
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-	</context:component-scan>-->
+		<context:include-filter type="annotation" 
+			expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	<mvc:annotation-driven conversion-service="conversionService" />  
 		   
+    <!-- 
 	<context:component-scan base-package="com.adanac.demo" >
         <context:include-filter type="regex" 
                        expression="com.adanac.demo.bootstrap.action.*Action.*" />
         <context:include-filter type="regex" 
-                       expression="com.adanac.demo.bootstrap.service.*Service*.*" />
+                       expression="com.adanac.demo.bootstrap.service.*Service*.*" /> 
     </context:component-scan>
-	<mvc:annotation-driven conversion-service="conversionService" />  
-	
+	-->
 	<bean id="viewResolver" abstract="true">
 		<property name="attributes">
 			<props>

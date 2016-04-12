@@ -3,17 +3,18 @@ package com.adanac.demo.bootstrap.dao.picupload;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.adanac.demo.bootstrap.dao.common.BaseDao;
 import com.adanac.demo.bootstrap.entity.constant.CodeConst;
 import com.adanac.demo.bootstrap.entity.picupload.AlipayDto;
 import com.adanac.framework.dac.util.DacUtils;
+//import com.adanac.framework.dac.util.DacUtils;
 import com.adanac.framework.exception.SysException;
 import com.adanac.framework.log.MyLogger;
 import com.adanac.framework.log.MyLoggerFactory;
 
-@Service("alipayBaseService")
+@Component("alipayBaseServiceImpl")
 public class AlipayBaseServiceImpl implements AlipayBaseService {
 
 	@Autowired
