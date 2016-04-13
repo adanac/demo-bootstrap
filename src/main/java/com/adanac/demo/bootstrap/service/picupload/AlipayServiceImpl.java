@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.adanac.demo.bootstrap.dao.picupload.AlipayBaseService;
 import com.adanac.demo.bootstrap.entity.picupload.AlipayDto;
 
-@Service(value = "alipayService")
+@Service
 public class AlipayServiceImpl implements AlipayService {
 
 	@Autowired

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.adanac.demo.bootstrap.dao.common.BaseDao;
 import com.adanac.demo.bootstrap.entity.constant.CodeConst;
@@ -15,7 +15,7 @@ import com.adanac.framework.log.MyLogger;
 import com.adanac.framework.log.MyLoggerFactory;
 import com.alibaba.fastjson.JSONObject;
 
-@Component("pubNumBaseServiceImpl")
+@Service
 public class PubNumBaseServiceImpl implements PubNumBaseService {
 
 	@Autowired
@@ -27,13 +27,13 @@ public class PubNumBaseServiceImpl implements PubNumBaseService {
 	 */
 	@Override
 	public PubNum getPubNum(Long companyId) {
-		log.info("PubNumBaseServiceImpl-->getPubNum,params-->companyId:" + companyId);
+		log.info("PubNumBaseServiceImpl====>getPubNum====>params-->companyId:" + companyId);
 		try {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("companyId", companyId);
 			return baseDao.queryForObject("PubNum.SelectPubNumList", map, PubNum.class);
 		} catch (Exception e) {
-			log.error("PubNumBaseServiceImpl-->getPubNum: " + e);
+			log.error("PubNumBaseServiceImpl====>getPubNum====>error:" + e);
 			return null;
 		}
 	}

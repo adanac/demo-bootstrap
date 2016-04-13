@@ -3,7 +3,7 @@ package com.adanac.demo.bootstrap.dao.picupload;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.adanac.demo.bootstrap.dao.common.BaseDao;
 import com.adanac.demo.bootstrap.entity.constant.CodeConst;
@@ -14,7 +14,7 @@ import com.adanac.framework.exception.SysException;
 import com.adanac.framework.log.MyLogger;
 import com.adanac.framework.log.MyLoggerFactory;
 
-@Component("alipayBaseServiceImpl")
+@Service
 public class AlipayBaseServiceImpl implements AlipayBaseService {
 
 	@Autowired
@@ -31,7 +31,7 @@ public class AlipayBaseServiceImpl implements AlipayBaseService {
 	public int addAlipay(AlipayDto alipayDto) {
 		try {
 			Map<String, Object> paramMap = DacUtils.convertToMap(alipayDto);
-			return baseDao.execute("Alipay.addAlipay", paramMap);
+			return baseDao.execute("PaySerApp.AddPaySerApp", paramMap);
 		} catch (Exception e) {
 			log.error("AlipayBaseServiceImpl-->addAlipay: " + alipayDto.getId() + e);
 			throw new SysException(CodeConst.CODE_ERROR, e.getMessage());
@@ -47,7 +47,7 @@ public class AlipayBaseServiceImpl implements AlipayBaseService {
 	public int modAlipay(AlipayDto alipayDto) {
 		try {
 			Map<String, Object> paramMap = DacUtils.convertToMap(alipayDto);
-			return baseDao.execute("Alipay.modAlipay", paramMap);
+			return baseDao.execute("PaySerApp.ModifyPaySerApp", paramMap);
 		} catch (Exception e) {
 			log.error("AlipayBaseServiceImpl-->modAlipay: " + alipayDto.getId() + e);
 			throw new SysException(CodeConst.CODE_ERROR, e.getMessage());

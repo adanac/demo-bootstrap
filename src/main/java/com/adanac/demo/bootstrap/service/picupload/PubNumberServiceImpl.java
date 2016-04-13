@@ -15,7 +15,7 @@ import com.adanac.framework.log.MyLogger;
 import com.adanac.framework.log.MyLoggerFactory;
 import com.alibaba.fastjson.JSONObject;
 
-@Service(value = "pubNumberService")
+@Service
 public class PubNumberServiceImpl implements PubNumberService {
 
 	@Autowired

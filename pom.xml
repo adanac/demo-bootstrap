@@ -99,6 +99,10 @@
     	<groupId>com.google.code.gson</groupId>
     	<artifactId>gson</artifactId>
     </dependency>
+    <dependency>
+	  <groupId>org.apache</groupId>
+	  <artifactId>commons-dbutils</artifactId>
+	</dependency>
   </dependencies>
   <build>
     <finalName>demo-bootstrap</finalName>
