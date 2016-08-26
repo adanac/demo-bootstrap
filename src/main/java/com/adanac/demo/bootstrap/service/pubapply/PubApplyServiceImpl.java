@@ -22,37 +22,37 @@ public class PubApplyServiceImpl implements PubApplyService {
 	private Pager<PubApplyDto> pubApplyPager;
 
 	@Override
-	public Pager<PubApplyDto> queryPubApplyPage(PubApplyQueryDto query, Integer page, Integer paging) {
+	public Pager<PubApplyDto> queryPubApplyPage(PubApplyQueryDto query, Integer pageNumber, Integer pageSize) {
 		if (pubApplyList == null) {
-			pubApplyPager = initApply();
+			pubApplyPager = initApply(pageNumber, pageSize);
 		}
 		return pubApplyPager;
 	}
 
-	public Pager<PubApplyDto> initApply() {
+	public Pager<PubApplyDto> initApply(Integer pageNumber, Integer pageSize) {
 		if (pubApplyPager == null) {
-			pubApplyPager = initApplyPager();
+			pubApplyPager = initApplyPager(pageNumber, pageSize);
 		}
 		return pubApplyPager;
 	}
 
-	private Pager<PubApplyDto> initApplyPager() {
+	private Pager<PubApplyDto> initApplyPager(Integer pageNumber, Integer pageSize) {
 		Pager<PubApplyDto> pager = new Pager<PubApplyDto>();
 		if (pubApplyList == null) {
-			pubApplyList = getPubApplyList();
+			pubApplyList = getPubApplyList(pageNumber, pageSize);
 		}
 		pager.setDatas(pubApplyList);
 		pager.setTotalDataCount(pubApplyList.size());
 		return pager;
 	}
 
-	private List<PubApplyDto> getPubApplyList() {
+	private List<PubApplyDto> getPubApplyList(Integer pageNumber, Integer pageSize) {
 		log.info("PubApplyServiceImpl====>getPubApplyList====>:");
 		try {
 
 			List<PubApplyDto> list = new ArrayList<PubApplyDto>();
 			String today = DateUtils.format(new Date(), "yyyy-MM-dd");
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < pageSize; i++) {
 				PubApplyDto pubApply = new PubApplyDto();
 				pubApply.setNumber(String.format("%02d", i + 1));
 				if (i % 2 == 0) {
@@ -72,7 +72,7 @@ public class PubApplyServiceImpl implements PubApplyService {
 			}
 			return list;
 		} catch (Exception e) {
-			log.error("bug====>:" + e.toString());
+			log.error("error====>:" + e.toString());
 		}
 		return null;
 	}

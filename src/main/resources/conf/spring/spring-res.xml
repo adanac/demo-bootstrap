@@ -16,7 +16,7 @@
 	<bean id="propertyConfig"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location">
-			<value>classpath:conf/main-setting.properties</value>
+			<value>classpath:conf/main-setting-web.properties</value>
 		</property>
 		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
 	</bean>
@@ -52,5 +52,5 @@
 	    <property name="dataSource" ref="dataSource"></property>   
 	</bean>  
 	<!-- JNDI数据源 -->
-	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/o2o_pay" proxy-interface="javax.sql.DataSource" lookup-on-startup="false" /> 
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/demo" proxy-interface="javax.sql.DataSource" lookup-on-startup="false" /> 
 </beans>

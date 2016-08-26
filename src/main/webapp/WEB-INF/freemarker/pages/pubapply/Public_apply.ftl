@@ -78,7 +78,7 @@
     	queryApplyList();
     });*/
     $(function(){
-    	queryApplyList();
+    	queryList();
     });
     var basePath = '${base}';
     </script>

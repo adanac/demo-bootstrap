@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.adanac.demo.bootstrap.entity.common.BootstrapPage;
 import com.adanac.demo.bootstrap.entity.common.BootstrapTable;
 import com.adanac.demo.bootstrap.entity.pubapply.PubApplyDto;
 import com.adanac.demo.bootstrap.entity.pubapply.PubApplyQueryDto;
@@ -19,12 +20,11 @@ import com.adanac.demo.bootstrap.service.pubapply.PubApplyService;
 import com.adanac.framework.log.MyLogger;
 import com.adanac.framework.log.MyLoggerFactory;
 import com.adanac.framework.page.Pager;
-import com.adanac.framework.page.PagerParam;
 
 import net.sf.json.JSONObject;
 
 @Controller
-@RequestMapping(value = "/pubapply", produces = "text/html;charset=UTF-8")
+@RequestMapping(value = "/apply", produces = "text/html;charset=UTF-8")
 public class PubApplyAction {
 
 	@Autowired
@@ -35,7 +35,7 @@ public class PubApplyAction {
 	/**
 	 * 跳转到服务申请查询
 	 */
-	@RequestMapping(value = "/toPubapply")
+	@RequestMapping(value = "/toApply")
 	public ModelAndView toPubapply() {
 		return new ModelAndView("pages/pubapply/Public_apply.ftl");
 	}
@@ -44,12 +44,10 @@ public class PubApplyAction {
 	 * 查询服务申请列表
 	 */
 	@ResponseBody
-	@RequestMapping(value = "pubApplyList")
+	@RequestMapping(value = "list")
 	public String pubApplyList(HttpServletRequest request, HttpServletResponse response, PubApplyQueryDto query,
-			Integer page, Integer paging) {
-		logger.info(
-				"pubApplyList====queryAttr====>pubApply:" + query.toString() + ",page:" + page + ",paging:" + paging);
-		PagerParam param = new PagerParam();
+			BootstrapPage param) {
+		logger.info("请求参数：{}", "{pageNumber:" + param.getPageNumber() + "," + "pageSize:" + param.getPageSize() + "}");
 		Pager<PubApplyDto> pubApplies = pubApplyService.queryPubApplyPage(query, param.getPageNumber(),
 				param.getPageSize());
 		List<PubApplyDto> pubApplyList = pubApplies.getDatas();

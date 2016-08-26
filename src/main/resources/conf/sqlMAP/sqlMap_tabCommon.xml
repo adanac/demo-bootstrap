@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<sqlMap namespace="tabCommon">
+
+	<sql id="queryCond">
+    	<![CDATA[
+    	    select * from demo.tab_common m
+    	    where 1=1
+    	    <#if id?exists && id!="">
+    			and m.id like :id
+    		</#if>
+    		<#if deptCode?exists && deptCode!="">
+    			and m.deptCode in (${deptCode})
+    		</#if>
+    	    <#if userName?exists && userName!="">
+    			and m.userName like CONCAT('%',:userName,'%')
+    		</#if>
+    		 <#if passwd?exists && passwd!="">
+    			and m.passwd = :passwd
+    		</#if>
+    	    <#if age?exists && age!="">
+    			and m.age = :age
+    		</#if>
+		]]>
+    </sql>
+
+	<sql id="select">
+    	<![CDATA[
+    	    select * from demo.tab_common m
+    	    where 1=1
+    	    <#if id?exists && id!="">
+    			and m.id = :id
+    		</#if>
+    	    <#if userName?exists && userName!="">
+    			and m.userName = :userName
+    		</#if>
+    		 <#if passwd?exists && passwd!="">
+    			and m.passwd = :passwd
+    		</#if>
+    	    <#if age?exists && age!="">
+    			and m.age = :age
+    		</#if>
+		]]>
+    </sql>
+	
+	<sql id="insert">
+    	<![CDATA[
+    	    insert into tab_common(ID,DEPTCODE,USERNAME,PASSWD,AGE)
+    	    values 
+    	    (:id,:deptCode,:userName,:passwd,:age)
+		]]>
+    </sql>
+    
+    <sql id="update">
+    	<![CDATA[
+    	    update tab_common set ID = :id
+    	    <#if userName?exists && userName!="">
+    	    	,userName = :userName
+    	    </#if>
+    	    <#if deptCode?exists && deptCode!="">
+    	    	,deptCode = :deptCode
+    	    </#if>
+    	    <#if passwd?exists && passwd!="">
+    	    	,passwd = :passwd
+    	    </#if>
+    	    <#if age?exists && age!="">
+    	    	,age = :age
+    	    </#if>
+    	    where ID = :id
+		]]>
+    </sql>
+    
+    <!-- 修改 -->
+	<sql id="update2">
+    <![CDATA[
+	update TAB_COMMON
+	   set USERNAME      = :userName,
+	       DEPTCODE   = :deptCode,
+	       SEX       = :sex,
+	       AGE        = :age,
+	       PASSWD      = :passwd,
+	       contractno    = :contractNo,
+	       tranmode      = :tranMode
+	 where ID = :id
+    ]]>
+	</sql>
+    
+    <sql id="delete">
+    	<![CDATA[
+    	    delete from demo.tab_common where ID = :id
+		]]>
+    </sql>
+    
+    <sql id="findDeptByCode">
+	<![CDATA[
+		SELECT 
+	    	tn.deptCode as deptCode,
+	    	tn.userName as userName,
+	    	'['|| tn.deptCode ||']'||tn.userName as viewName
+	  	FROM
+	    	demo.tab_common tn
+	  	where 
+	        1 = 1
+		<#if deptCode?exists && deptCode!="">
+	   		and	(tn.deptCode like CONCAT(:deptCode, '%'))
+	   	</#if>
+		ORDER BY 
+			tn.deptCode asc
+    ]]>
+	</sql>
+    
+</sqlMap>
