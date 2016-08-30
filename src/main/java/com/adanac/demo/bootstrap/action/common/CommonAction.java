@@ -1,4 +1,4 @@
-package com.adanac.demo.bootstrap.action;
+package com.adanac.demo.bootstrap.action.common;
 
 import java.util.ArrayList;
 import java.util.HashMap;
