@@ -13,4 +13,9 @@ public class IndexAction {
 	public String home(HttpServletRequest request, ModelMap model) {
 		return "index.ftl";
 	}
+
+	@RequestMapping("echarts/toDemo1")
+	public String toEchart(HttpServletRequest request, ModelMap model) {
+		return "pages/echarts/ec_demo1.ftl";
+	}
 }

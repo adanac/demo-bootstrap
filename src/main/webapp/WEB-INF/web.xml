@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+<display-name>Archetype Created Web Application</display-name>
     <welcome-file-list>
 		<welcome-file>index.do</welcome-file>
 	</welcome-file-list>
@@ -62,7 +62,6 @@
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>
 		<url-pattern>*.htm</url-pattern>
-		<url-pattern>*.html</url-pattern>
 		<url-pattern>*.do</url-pattern>
 		<url-pattern>*.sy</url-pattern>
 	</servlet-mapping>
