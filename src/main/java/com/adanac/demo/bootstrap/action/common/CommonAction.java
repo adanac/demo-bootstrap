@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,6 +34,9 @@ import com.alibaba.fastjson.JSONObject;
 public class CommonAction extends BaseController {
 
 	public MyLogger log = MyLoggerFactory.getLogger(getClass());
+
+	// 用于模拟缓存，提高查询效率
+	private Map<String, List<String>> queryCache = new ConcurrentHashMap<String, List<String>>();
 
 	@Autowired
 	private CommonService commonService;
@@ -146,7 +150,12 @@ public class CommonAction extends BaseController {
 		// request.getSession().getAttribute(Const.SESSION_LOGINUSER);
 		// paramMap.put("usercode", user.getUserId());
 		try {
-			result = commonService.queryDept(deptCode);
+			if (queryCache.values() != null && queryCache.get(deptCode) != null) {
+				result = queryCache.get(deptCode);
+			} else {
+				result = commonService.queryDept(deptCode);
+				queryCache.put(deptCode, result);
+			}
 			map.put(STATUS, SUCCESS);
 		} catch (Exception e) {
 			log.info("queryDept========>error:", e);
