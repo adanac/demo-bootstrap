@@ -61,7 +61,7 @@ public class ExportController extends BaseController {
 		String basePath = request.getSession().getServletContext().getRealPath(CodeConst.PARAM_SEPARATE)
 				+ CodeConst.PARAM_RES + CodeConst.PARAM_SEPARATE; // 项目物理地址
 		String filepath = exportService.exportFile(basePath, tableName, list);
-		downloadFile(response, filepath);
+		downloadFile(request, response, filepath);
 	}
 
 	private List<Map<String, Object>> processList(List<?> list) {
@@ -80,7 +80,7 @@ public class ExportController extends BaseController {
 	 * @param response
 	 * @param filepath
 	 */
-	private void downloadFile(HttpServletResponse response, String filepath) {
+	private void downloadFile(HttpServletRequest request, HttpServletResponse response, String filepath) {
 		try {
 			// path是指欲下载的文件的路径。
 			File file = new File(filepath);
@@ -97,10 +97,15 @@ public class ExportController extends BaseController {
 			fis.close();
 			// 清空response
 			response.reset();
-			// 设置response的Header
+			// 解决浏览器兼容问题， 设置response的Header
+			String agent = request.getHeader("User-Agent").toUpperCase();
+			if (null != agent && -1 != agent.indexOf("MSIE") || null != agent && -1 != agent.indexOf("TRIDENT")) {// IE内核
+				filename = java.net.URLEncoder.encode(filename, "UTF8");
+			} else {// firefox,chrome
+				filename = new String(filename.getBytes("UTF-8"), "iso-8859-1");
+			}
 			response.setContentType("application/vnd.ms-excel;charset=UTF-8");
-			String downLoadName = new String(filename.getBytes("utf-8"), "iso8859-1");
-			response.addHeader("Content-Disposition", "attachment;filename=" + downLoadName);
+			response.addHeader("Content-Disposition", "attachment;filename=" + filename);
 			response.addHeader("Content-Length", "" + file.length());
 			OutputStream toClient = new BufferedOutputStream(response.getOutputStream());
 			toClient.write(buffer);

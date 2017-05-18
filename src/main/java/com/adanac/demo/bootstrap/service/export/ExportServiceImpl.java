@@ -92,7 +92,11 @@ public class ExportServiceImpl implements ExportService {
 					String val = map.get(enname) == null ? "," : (map.get(enname).toString().trim() + ",");
 					// 判断是不是以"0"开头的，如果是则在前面添加一个"'"
 					val = this.startWith0(val);
-					csvFileOutputStream.write(val);
+					if (icount == 11) {// 解决数据过长，excel显示2.1E的格式
+						csvFileOutputStream.write("\t" + val);
+					} else {
+						csvFileOutputStream.write(val);
+					}
 				}
 				csvFileOutputStream.newLine();
 			}
